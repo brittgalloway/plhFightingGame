@@ -25,10 +25,22 @@ const player = new Fighter({
         x: 0,
         y: 0
     },
-    color: 'blue',
     offset: {
         x: 0,
         y: 0,
+    },
+    imageSrc: './img/harmony/HarmonyAttackRest.png',
+    framesMax: 7,
+    scale: 2.5,
+    sprites: {
+        idle: {
+            imageSrc: './img/harmony/HarmonyAttackRest.png',
+            framesMax: 7,
+        },
+        run: {
+            imageSrc: './img/harmony/HarmonyRun.png',
+            framesMax: 8,
+        }
     }
 })
 
@@ -84,6 +96,8 @@ function animate () {
 
     if (keys.a.pressed && player.lastKey === 'a') {
         player.velocity.x = -5;
+        player.image = player.sprites.run.image;
+
     } else if (keys.d.pressed && player.lastKey === 'd') {
         player.velocity.x = 5;
     }
@@ -166,7 +180,7 @@ window.addEventListener('keyup',  (e)=>{
         case 'a': 
             keys.a.pressed = false;
             break;
-            // enemy
+        // enemy
         case 'ArrowRight': 
             keys.ArrowRight.pressed = false;
             enemy.lastKey = 'ArrowRight';

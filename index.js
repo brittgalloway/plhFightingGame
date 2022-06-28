@@ -90,17 +90,23 @@ function animate () {
     background.update();
 
     player.update();
-    enemy.update();
+    // enemy.update();
     player.velocity.x = 0;
     enemy.velocity.x = 0;
 
     if (keys.a.pressed && player.lastKey === 'a') {
         player.velocity.x = -5;
         player.image = player.sprites.run.image;
-
+        player.framesMax= player.sprites.run.framesMax;
+        
     } else if (keys.d.pressed && player.lastKey === 'd') {
         player.velocity.x = 5;
-    }
+        player.image = player.sprites.run.image;
+        player.framesMax= player.sprites.run.framesMax;
+    } else if(keys.a.pressed === false && keys.d.pressed === false){
+        player.image = player.sprites.idle.image;
+        player.framesMax= player.sprites.idle.framesMax;
+    };
     if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
         enemy.velocity.x = -5;
     } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {

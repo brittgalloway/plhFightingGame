@@ -52,8 +52,7 @@ class Sprite {
 class Fighter extends Sprite{
     constructor({
         position, 
-        velocity, 
-        color = 'red', 
+        velocity,
         offset, 
         imageSrc, 
         scale = 1, 
@@ -80,8 +79,8 @@ class Fighter extends Sprite{
             width: 100,
             height: 50
         }
-        this.color = color;
-        this.isAttacking;
+        // this.color = color;
+        this.isAttacking = false;
         this.health = 100;
         this.framesCurrent = 0;
         this.framesElapsed = 0;
@@ -89,7 +88,7 @@ class Fighter extends Sprite{
         this.sprites = sprites;
         for (const sprite in this.sprites) {
             sprites[sprite].image = new Image();
-            sprites[sprite].image.ssrc =  sprites[sprite].imageSrc;
+            sprites[sprite].image.src =  sprites[sprite].imageSrc;
         }
     }
     update() {
